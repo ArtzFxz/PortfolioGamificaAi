@@ -1,11 +1,14 @@
 import { ImageSource, Loader } from "excalibur";
 import sword from "./images/sword.png";
 import logo from "./images/logo.png";
+import logover from "./images/logover.png";
+
 
 
 export const Resources = {
   Sword: new ImageSource(sword),
-  Logo: new ImageSource(logo)
+  Logo: new ImageSource(logo),
+  Logover: new ImageSource(logover)
 } as const;
 
 export const loader = new Loader();
