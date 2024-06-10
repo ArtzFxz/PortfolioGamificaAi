@@ -1,8 +1,27 @@
-import { Actor, Color, Engine, Scene, vec } from "excalibur";
+import { Actor, Color, Engine, Keys, Scene, SceneActivationContext, vec } from "excalibur";
 import { Resources } from "../resources";
 
 export class gamificationScene extends Scene {
     elementText?: HTMLElement
+
+    // Método para esmaecer um elemento HTML
+    fadeOutElement(elemento: HTMLElement) {
+        // Pegar opacidade do elemento HTML
+        let opacidade = parseFloat(elemento.style.opacity)
+
+        // Repetir diminuição da opacidade
+        setInterval(() => {
+            // Se o elemento ainda está visivel
+        if (opacidade > 0) {
+            // Diminuir a opacidade
+            opacidade = opacidade - 0.02
+
+            // Atualizar a opacidade do elemento
+            elemento.style.opacity = opacidade.toString()
+        }
+        }, 20)
+
+    }
 
     onInitialize(engine: Engine<any>): void {
         this.backgroundColor = Color.fromHex("#403f4c")
@@ -43,5 +62,17 @@ export class gamificationScene extends Scene {
         this.elementText.innerHTML = `<h2>O que é Gamificação</h2>
         <p>Gamificação é a aplicação de elementos típicos de jogos em contextos não lúdicos, com o objetivo de engajar e motivar indivíduos a atingir determinados objetivos. Esta abordagem se utiliza de componentes como pontuação, níveis, recompensas, desafios, e feedback imediato, visando promover comportamentos desejados e aumentar a participação e o comprometimento dos participantes.</p>`
 
+
+        // Configurar a cena para detectar a tecla Enter e ir para a proxima cena
+        this.input.keyboard.on("press", (event) => {
+            if(event.key == Keys.Enter) {
+                this.fadeOutElement(this.elementText!)
+                engine.goToScene("exposicao")
+            }
+        })
+    }
+
+    onDeactivate(context: SceneActivationContext<undefined>): void {
+        this.elementText?.remove()
     }
 }

@@ -14,7 +14,7 @@ const game = new Engine({
 game.addScene("bemvindo", new welcomeScene())
 game.addScene("historia", new historyScene())
 game.addScene("gamificacao", new gamificationScene())
-game.addScene("esposicao", new expoScene())
+game.addScene("exposicao", new expoScene())
 
 game.start(loader).then(() => {
   game.goToScene("bemvindo", {
