@@ -1,4 +1,4 @@
-import { Actor, Color, Engine, Keys, vec } from "excalibur";
+import { Actor, CollisionType, Color, Engine, Keys, vec } from "excalibur";
 
 export class Player extends Actor {
     // Propriedade 
@@ -11,7 +11,8 @@ export class Player extends Actor {
             width: 32,
             height: 32,
             name: "Jogador",
-            color: Color.Red
+            color: Color.Red,
+            collisionType: CollisionType.Active
         })
     }
 
@@ -66,8 +67,20 @@ export class Player extends Actor {
                 event.key == Keys.D ||
                 event.key == Keys.Right
             ) {
-
+                this.vel.x = 0
             }
+
+            // Para movimentar vertical ao soltar as teclas de movimentação vertical
+            if (
+                event.key == Keys.W ||
+                event.key == Keys.Up ||
+                event.key == Keys.S ||
+                event.key == Keys.Down
+            ) {
+                // Zerar velocidade vertical
+                this.vel.y = 0
+            }
+
         })
     }
 
