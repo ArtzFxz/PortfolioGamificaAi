@@ -1,10 +1,14 @@
-import { ImageSource, Loader } from "excalibur";
+import { ImageFiltering, ImageSource, Loader, Sound } from "excalibur";
 import { TiledResource } from "@excaliburjs/plugin-tiled";
 
 import sword from "./images/sword.png";
 import logo from "./images/logo.png";
 import logover from "./images/logover.png";
-import gamifi from "./images/gamification.png"
+import gamifi from "./images/gamification.png";
+import case1 from "./images/npc1.png";
+import case2 from "./images/npc2.png";
+import case3 from "./images/npc3.png";
+
 
 import pngTilesetPath from "./maps/Room_Builder_32x32.png?url"
 
@@ -15,12 +19,22 @@ import tsxBibliotecaPath from "./maps/tileset_biblioteca.tsx?url"
 
 import tmxMapaPath from "./maps/showroom_map.tmx?url"
 
+import playerSpritePath from "./sprites/Blu.png"
+
+import ritmada from "./sounds/ritmada_zelda.mp3";
+import classico from "./sounds/zelda.mp3"
 
 export const Resources = {
   Sword: new ImageSource(sword),
   Logo: new ImageSource(logo),
+  PlayerSpriteSheet: new ImageSource(playerSpritePath, { filtering: ImageFiltering.Pixel }),
   Logover: new ImageSource(logover),
+  case1: new ImageSource(case1),
+  case2: new ImageSource(case2),
+  case3: new ImageSource(case3),
   Gamific: new ImageSource(gamifi),
+  RitmadaBGM: new Sound(ritmada),
+  ClassicBGM: new Sound(classico),
   Mapa: new TiledResource(tmxMapaPath, {
     pathMap: [
       { path: "showroom_map.tmx", output: tmxMapaPath },
