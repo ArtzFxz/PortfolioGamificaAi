@@ -9,6 +9,10 @@ import case1 from "./images/npc1.png";
 import case2 from "./images/npc2.png";
 import case3 from "./images/npc3.png";
 
+import npcASpriteSheet from "./sprites/npcA.png";
+import npcBSpriteSheet from "./sprites/npcB.png";
+import npcCSpriteSheet from "./sprites/npcC.png";
+
 
 import pngTilesetPath from "./maps/Room_Builder_32x32.png?url"
 
@@ -35,6 +39,10 @@ export const Resources = {
   Gamific: new ImageSource(gamifi),
   RitmadaBGM: new Sound(ritmada),
   ClassicBGM: new Sound(classico),
+  NpcASpriteSheet: new ImageSource(npcASpriteSheet, { filtering: ImageFiltering.Pixel }),
+  NpcBSpriteSheet: new ImageSource(npcBSpriteSheet, { filtering: ImageFiltering.Pixel }),
+  NpcCSpriteSheet: new ImageSource(npcCSpriteSheet, { filtering: ImageFiltering.Pixel }),
+
   Mapa: new TiledResource(tmxMapaPath, {
     pathMap: [
       { path: "showroom_map.tmx", output: tmxMapaPath },
